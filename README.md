@@ -1,3 +1,5 @@
-# ft_ssl_md5
+# ft_ssl
 
-School project aiming to reimplement OpenSSL md5 hashing algorithms
+School project aiming to recreate part of the OpenSSL functionality.
+
+## Part I - md5 and sha256
