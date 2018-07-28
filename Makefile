@@ -6,7 +6,7 @@
 #    By: sganon <sganon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/28 17:26:52 by sganon            #+#    #+#              #
-#    Updated: 2018/07/28 19:39:50 by sganon           ###   ########.fr        #
+#    Updated: 2018/07/28 19:48:00 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,8 @@ $(BUILD_DIR)/%.c.o: %.c
 all : $(NAME)
 
 deps:
-	@echo "Cloning dependencies (libft)"
-	@rm -rf libft
-	@git clone https://gitlab.com/sganon/libft
+	@echo "Updating dependencies (libft)"
+	@sh ./install_deps.sh
 	@echo "Building libft"
 	@make -C libft/
 
