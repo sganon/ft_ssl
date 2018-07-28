@@ -6,7 +6,7 @@
 /*   By: sganon <sganon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 19:08:06 by sganon            #+#    #+#             */
-/*   Updated: 2018/07/28 19:42:37 by sganon           ###   ########.fr       */
+/*   Updated: 2018/07/28 22:16:24 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 void print_help(int level)
 {
-  (void)level;
-  ft_putstr("usage: ft_ssl command [command opts] [command args]\n");
+  if (level == 0)
+    ft_putstr("usage: ft_ssl command [command opts] [command args]\n");
+}
+
+void print_available_funcs(char *tried)
+{
+  ft_putstr("ft_ssl: Error: '");
+  ft_putstr(tried);
+  ft_putstr("' is an invalid command\n");
 }

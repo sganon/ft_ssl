@@ -6,7 +6,7 @@
 /*   By: sganon <sganon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 17:18:40 by sganon            #+#    #+#             */
-/*   Updated: 2018/07/28 19:40:51 by sganon           ###   ########.fr       */
+/*   Updated: 2018/07/28 22:25:50 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,22 @@
 
 # include "libft.h"
 
-typedef enum FUNCTION_TYPES {MD5, SHA256} SSLFunctions;
+typedef enum FUNCTION_TYPES {MD5, SHA256} SSLFunction;
 
-void arg_parser(int argc, char **argv);
-void print_help(int level);
+typedef struct s_functions_value
+{
+  SSLFunction f;
+  char        *val;
+}             t_functions_value;
+typedef struct  s_ssl
+{
+  SSLFunction  current_function;
+}               t_ssl;
+
+void        arg_parser(t_ssl *ssl, int argc, char **argv);
+void        print_help(int level);
+const char  *getSSLFunction(SSLFunction f);
+int         toSSLFunction(char *f);
+void        print_available_funcs(char *tried);
 
 #endif
