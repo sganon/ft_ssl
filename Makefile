@@ -6,7 +6,7 @@
 #    By: sganon <sganon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/28 17:26:52 by sganon            #+#    #+#              #
-#    Updated: 2018/07/28 19:48:00 by sganon           ###   ########.fr        #
+#    Updated: 2018/07/28 19:57:14 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME ?= ft_ssl
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./src
 
-SRCS := $(shell find -E . -regex '[a-zA-Z.\/_]+\.c$$' | sed 's|^./||')
+SRCS := $(shell find -E src -regex '[a-zA-Z.\/_]+\.c$$' | sed 's|^./||')
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 
 CC_FLAGS = -Wall -Werror -Wextra
@@ -40,10 +40,12 @@ $(NAME): deps $(OBJS)
 	@echo "ft_ssl created"
 
 clean:
+	@make -C libft/ clean
 	@rm -rf $(BUILD_DIR)
 	@echo "Objects cleaned"
 
 fclean : clean
+	@make -C libft/ fclean
 	@rm -f $(NAME)
 	@echo "ft_ssl cleaned"
 
