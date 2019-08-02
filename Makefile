@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 OS = $(shell uname)
 
 NAME ?= ft_ssl
@@ -31,7 +31,11 @@ DEPS_FLAG = -L./libft -lft
 
 $(BUILD_DIR)/%.c.o: %.c
 	@mkdir -p $(dir $@)
+ifeq ($(CC_JSON_FLAG), -MJ)
+	$(CC) $(CC_JSON_FLAG) $@.json $(CC_FLAGS) -c $< -o $@ $(INC_FLAG)
+else
 	$(CC) $(CC_FLAGS) -c $< -o $@ $(INC_FLAG)
+endif
 
 all : $(NAME)
 
@@ -45,6 +49,10 @@ $(NAME): deps $(OBJS)
 	$(CC) $(OBJS) -o $@ $(INC_FLAG) $(DEPS_FLAG)
 	@echo "ft_ssl created"
 
+compile_commands.json:
+	@rm -rf $(BUILD_DIR)
+	@make CC_JSON_FLAG="-MJ" $(NAME)
+	@/usr/bin/sed -e '1s/^/[\n/' -e '$$s/,$$/\n]/' $(BUILD_DIR)/**/*.o.json > compile_commands.json
 clean:
 	@make -C libft/ clean
 	@rm -rf $(BUILD_DIR)

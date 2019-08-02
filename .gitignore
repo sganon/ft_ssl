@@ -1,3 +1,5 @@
 build/
 libft/
 ft_ssl
+.ccls-cache/
+compile_commands.json

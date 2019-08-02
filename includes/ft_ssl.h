@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF_H
-# define WOLF_H
+#ifndef FT_SSL_H
+# define FT_SSL_H
 
 # include "libft.h"
 

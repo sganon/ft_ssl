@@ -61,5 +61,5 @@ void arg_parser(t_ssl *ssl, int argc, char **argv)
   }
 
   (*parsing_functions[get_function_index(ssl, conv)])(ssl, argv);
-  // ft_putstr(getSSLFunction(ssl->current_function));
+  ft_putstr(getSSLFunction(ssl->current_function));
 }
