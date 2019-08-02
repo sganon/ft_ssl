@@ -11,16 +11,22 @@
 # **************************************************************************** #
 
 CC = gcc
+OS = $(shell uname)
 
 NAME ?= ft_ssl
 BUILD_DIR ?= ./build
-SRC_DIRS ?= ./src
 
-SRCS := $(shell find -E src -regex '[a-zA-Z.\/_0-9]+\.c$$' | sed 's|^./||')
+ifeq ($(OS), Linux)
+	SRCS	= $(shell find src -regex '[a-zA-Z.\/_0-9]+\.c$$')
+endif
+ifeq ($(OS), Darwin)
+	SRCS	= $(shell find -E src -regex '[a-zA-Z.\/_0-9]+\.c$$' | sed 's|^./||')
+endif
+
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 
 CC_FLAGS = -Wall -Werror -Wextra
-INC_FLAG = -I./includes -I./libft/includes
+INC_FLAG = -I./includes -I./libft
 DEPS_FLAG = -L./libft -lft
 
 $(BUILD_DIR)/%.c.o: %.c

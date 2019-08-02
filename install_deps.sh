@@ -16,5 +16,5 @@ else
     printf "${RED}[ERROR] Libft has not be fetched.${NC}\n"
     exit 1
   fi
-  git clone https://gitlab.com/sganon/libft.git
+  git clone https://github.com/sganon/libft.git
 fi
