@@ -22,10 +22,17 @@ typedef struct  s_functions_value
   SSLFunction   f;
   char          *val;
 }               t_functions_value;
+typedef struct  s_hasher
+{
+  void(*handler)(char *msg);
+  char          *msg;
+}               t_hasher;
 typedef struct  s_ssl
 {
+  t_hasher      *hasher;
   SSLFunction   current_function;
 }               t_ssl;
+
 
 typedef struct  s_parsing_index
 {
@@ -39,5 +46,6 @@ void        print_help(int level);
 const char  *getSSLFunction(SSLFunction f);
 int         toSSLFunction(char *f);
 void        print_available_funcs(char *tried);
+void        md5_handler(char *msg);
 
 #endif

@@ -16,11 +16,11 @@
 
 static int setSSLFunction(t_ssl *ssl, char *f)
 {
-  int ssl_func;
+int ssl_func;
 
-  ssl_func = toSSLFunction(f);
-  if (ssl_func < 0)
-    return -1;
+ssl_func = toSSLFunction(f);
+if (ssl_func < 0)
+return -1;
   ssl->current_function = ssl_func;
   return ssl->current_function;
 }
@@ -61,5 +61,5 @@ void arg_parser(t_ssl *ssl, int argc, char **argv)
   }
 
   (*parsing_functions[get_function_index(ssl, conv)])(ssl, argv);
-  ft_putstr(getSSLFunction(ssl->current_function));
+  // ft_putstr(getSSLFunction(ssl->current_function));
 }

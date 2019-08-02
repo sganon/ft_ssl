@@ -20,4 +20,5 @@ int		main(int argc, char **argv)
   if (!ssl)
     return (1);
   arg_parser(ssl, argc, argv);
+  ssl->hasher->handler(ssl->hasher->msg);
 }
